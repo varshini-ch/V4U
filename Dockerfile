@@ -1,15 +1,14 @@
-# Use official PHP image with Apache
-FROM php:8.2-apache
+# Use official PHP with Apache
+FROM php:8.1-apache
 
-# Copy all project files into Apache root
+# Enable PHP extensions
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Copy project files into Apache's root directory
 COPY . /var/www/html/
 
-# Set permissions (Apache needs read access)
-RUN chown -R www-data:www-data /var/www/html/ \
-    && chmod -R 755 /var/www/html/
-
-# Enable mysqli extension for MySQL
-RUN docker-php-ext-install mysqli
+# Set working directory
+WORKDIR /var/www/html/
 
 # Expose port 80
 EXPOSE 80
