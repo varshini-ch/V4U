@@ -1,14 +1,15 @@
-# Use official PHP with Apache
 FROM php:8.1-apache
 
-# Enable PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+# Install required PHP extensions
+RUN apt-get update && apt-get install -y \
+    libonig-dev \
+    libzip-dev \
+    zip \
+    unzip \
+    && docker-php-ext-install mysqli pdo pdo_mysql
 
-# Copy project files into Apache's root directory
+# Copy your project
 COPY . /var/www/html/
-
-# Set working directory
 WORKDIR /var/www/html/
 
-# Expose port 80
 EXPOSE 80
