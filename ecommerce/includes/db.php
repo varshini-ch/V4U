@@ -1,5 +1,5 @@
 <?php
-$host = 'containers-us-west-19.railway.app'; // Replace with your Railway host
+$host = 'mysql.railway.internal'; // Replace with your Railway host
 $dbname = 'railway';                          // Replace with your Railway database name
 $user = 'root';
 $password = 'YGFPuRaPUubtLxRQXvqONNWsVgGPpzQp';
